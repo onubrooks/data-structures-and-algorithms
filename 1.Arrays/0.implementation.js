@@ -29,6 +29,25 @@ class MyArray {
       delete this.data[this.length - 1];
       this.length--;
     }
+
+    unshiftItems(index) {
+      for (let i = this.length; i > index; i--) {
+        this.data[i] = this.data[i - 1];
+      }
+    }
+
+    insertAtIndex(index, item) {
+      if (index === this.length) {
+        this.push(item);
+        return;
+      }
+      if(index > this.length) {
+        throw new Error('Index out of bounds');
+      }
+      this.unshiftItems(index);
+      this.data[index] = item;
+      this.length++;
+    }
   }
   
   const myArray = new MyArray();

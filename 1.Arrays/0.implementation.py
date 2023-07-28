@@ -27,11 +27,6 @@ class Array:
         item = self.data[index]
         self.shift(index)
         return item
-    
-    def insert(self, index, item):
-        self.size += 1
-        self.data[self.size - 1] = item
-        self.unshift(index)
 
     def shift(self, index):
         for i in range(index, len(self.data) - 1):
@@ -40,7 +35,11 @@ class Array:
         self.size -= 1
 
     def unshift(self, index):
-        for i in range(len(self.data) - 1, index - 1, -1):
+        for i in range(len(self.data), index, -1):
             self.data[i] = self.data[i - 1]
-        del self.data[index - 1]
         self.size -= 1
+
+    def insert(self, index, item):
+        self.unshift(index)
+        self.data[index] = item
+        self.size += 1
