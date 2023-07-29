@@ -1,4 +1,4 @@
-class CrazyQueue {
+class QueueUsingStack {
     constructor() {
       this.first = [];
       this.last = [];
@@ -10,7 +10,6 @@ class CrazyQueue {
         this.last.push(this.first.pop());
       }
       this.last.push(value);
-      return this;
     }
   
     dequeue() {
@@ -29,7 +28,7 @@ class CrazyQueue {
     }
   }
   
-  const myQueue = new CrazyQueue();
+  const myQueue = new QueueUsingStack();
   myQueue.peek();
   myQueue.enqueue('Joy');
   myQueue.enqueue('Matt');

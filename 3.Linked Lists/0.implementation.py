@@ -73,10 +73,10 @@ class LinkedList:
         self.tail = self.head # type: ignore
         second = first.next # type: ignore
         while second != None:
-            temp = second.next
+            third = second.next
             second.next = first # type: ignore
             first = second
-            second = temp
+            second = third
         self.head.next = None # type: ignore
         self.head = first
         return self
