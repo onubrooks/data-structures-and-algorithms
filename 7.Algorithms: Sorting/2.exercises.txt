@@ -1,0 +1,25 @@
+Which sorting algorithm would you use for each of these scenarios?
+
+#1 - Sort 10 schools around your house by distance: 
+Insertion sort performs well on small data
+
+#2 - eBay sorts listings by the current Bid amount: 
+Radix or Counting sort since a bid is usually a fixed length/range integer eg 1 to 1k USD
+
+#3 - Sport scores on ESPN: 
+Quick sort for better memory efficiency
+
+#4 - Massive database (can't fit all into memory) needs to sort through past year's user data: 
+Merge sort - Data is so big and we are sorting out of memory so merging of various batches is possible
+
+#5 - Almost sorted Udemy review data needs to update and add 2 new reviews: 
+Insertion sort works well with almost sorted data
+
+#6 - Temperature Records for the past 50 years in Canada: 
+Quick sort for better memory efficiency
+Radix or Counting if temperature data has no decimals
+
+#7 - Large user name database needs to be sorted, data is very random: 
+Quick or Merge sort depending on memory availability or if we are worried about worst case pivot.
+
+#8 - You want to teach sorting for the first time: Bubble or Selection sort
