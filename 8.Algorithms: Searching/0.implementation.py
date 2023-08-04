@@ -26,7 +26,7 @@ class BinarySearchTree:
                     else:
                         current = current.left
                 # if data is greater than root, then go right
-                elif data > current.data:
+                elif data > current.value:
                     # if right is None, then insert data
                     if current.right is None:
                         current.right = Node(data)
@@ -69,3 +69,80 @@ class BinarySearchTree:
 
     def remove(self, data):
         pass
+
+    def BreadthFirstSearch(self):
+        current = self.root
+        final_list = []
+        queue = []
+        queue.append(current)
+
+        while len(queue) > 0:
+            current = queue.pop(0)
+            final_list.append(current.value)
+            if current.left:
+                queue.append(current.left) # high memory consumption due to adding child nodes to queue
+            if current.right:
+                queue.append(current.right)
+
+        return final_list
+    
+    def BreadthFirstSearchRecursive(self, queue, final_list):
+        if len(queue) < 1:
+            return final_list
+        current = queue.pop(0)
+        final_list.append(current.value)
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+        return self.BreadthFirstSearchRecursive(queue, final_list)
+    
+    def DFTPreOrder(self):
+        return traversePreOrder(self.root, [])
+    
+    def DFTPostOrder(self):
+        return traversePostOrder(self.root, [])
+    
+    def DFTInOrder(self):
+        return traverseInOrder(self.root, [])
+
+
+def traversePreOrder(node, final_list):
+    final_list.append(node.value)
+    if node.left:
+        traversePreOrder(node.left, final_list)
+    if node.right:
+        traversePreOrder(node.right, final_list)
+    return final_list
+
+def traverseInOrder(node, final_list):
+    if node.left:
+        traverseInOrder(node.left, final_list)
+    final_list.append(node.value)
+    if node.right:
+        traverseInOrder(node.right, final_list)
+    return final_list
+
+def traversePostOrder(node, final_list):
+    if node.left:
+        traversePostOrder(node.left, final_list)
+    if node.right:
+        traversePostOrder(node.right, final_list)
+    final_list.append(node.value)
+    return final_list
+
+tree = BinarySearchTree()
+tree.insert(9)
+tree.insert(4)
+tree.insert(6)
+tree.insert(20)
+tree.insert(170)
+tree.insert(15)
+tree.insert(1)
+
+print('BFS', tree.BreadthFirstSearch())
+print('BFS', tree.BreadthFirstSearchRecursive([tree.root], []))
+print('DFSpre', tree.DFTPreOrder())
+print('DFSin', tree.DFTInOrder())
+print('DFSpost', tree.DFTPostOrder())
