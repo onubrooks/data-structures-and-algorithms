@@ -38,6 +38,16 @@ class HashTable:
                 for item in buckets:
                     values.append(item[1])
         return values
+    
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        address = self._hash(key)
+        for index, value in enumerate(self.data[address]):
+            if value[0] == key:
+                del self.data[address][index]
 
 myHashTable = HashTable(50)
 myHashTable.set('grapes', 10000)
